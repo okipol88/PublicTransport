@@ -12,6 +12,7 @@ namespace PublicTransport
 		public MainPage()
 		{
 			InitializeComponent();
-		}
+            BindingContext = new PublicTransport.Core.ViewModels.MapViewModelBase();
+        }
 	}
 }

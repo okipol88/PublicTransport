@@ -2,13 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PublicTransport"
-             x:Class="PublicTransport.MainPage">
+             x:Class="PublicTransport.MainPage"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:core="clr-namespace:PublicTransport.Core;assembly=PublicTransport.Core"
+             >
 
-    <StackLayout>
+    <StackLayout  >
+        <StackLayout.Resources>
+            <ResourceDictionary>
+            </ResourceDictionary>
+        </StackLayout.Resources>
         <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <maps:Map 
+                  ItemsSource="{Binding VehicleLocations}"     
+                  IsShowingUser="true"
+                  MapType="Hybrid"
+            >
+            <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Position="{Binding Position}"
+                              Label="{Binding Text}" />
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
     </StackLayout>
 
 </ContentPage>
